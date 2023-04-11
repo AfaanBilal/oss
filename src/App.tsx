@@ -64,7 +64,7 @@ interface Repo {
 const languageFrequency: { [k: string]: number } = {};
 
 const App: React.FC = () => {
-    const username = window.location.hash.substring(1) || "AfaanBilal";
+    const username = window.location.search.substring(1) || "AfaanBilal";
 
     const [user, setUser] = React.useState<User | null>(null);
     const [orgs, setOrgs] = React.useState<Org[]>([]);
@@ -107,8 +107,8 @@ const App: React.FC = () => {
                 <div className="text-2xl ml-2 font-serif">Open Source Summary of @{username}</div>
                 <div className="text-xl mr-4 text-gray-400 hover:text-cyan-700">&copy; <a href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a></div>
             </div>
-            <div className="flex flex-row flex-grow">
-                <div className="flex flex-col border-r border-gray-700">
+            <div className="flex flex-row flex-grow flex-wrap">
+                <div className="flex flex-col border-r border-gray-700 lg:w-1/5 w-full">
                     <div className="flex flex-col p-6 items-center">
                         <div className="my-2">
                             <img src={user.avatar_url} className="w-40 rounded-xl" alt="avatar" />
@@ -135,7 +135,7 @@ const App: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-grow">
+                <div className="flex flex-col flex-grow flex-1">
                     <div className="flex flex-wrap border-b border-gray-700">
                         <div className="flex-1">
                             <div className="text-2xl text-gray-500 m-2">Summary</div>
