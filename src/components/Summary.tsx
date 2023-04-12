@@ -22,7 +22,7 @@ const Summary: React.FC<SummaryProps> = ({ user, repos, orgs, languages, languag
     return (
         <div className="flex-1 p-2">
             <div className="text-2xl text-gray-500 m-2">Summary</div>
-            <div className="text-xl text-gray-300 m-2 lg:mr-4 text-justify">
+            <div className="text-xl lg:text-2xl text-gray-300 m-2 lg:mr-4 text-justify">
                 <b>{user.name}</b> joined GitHub on <b>{new Date(user.created_at).toDateString()}</b>.
                 They have <b>{user.public_repos}</b> public repositories using <b>{languages.length}</b> different programming languages.
                 Their most used language is <b>{most_used_language}</b> which is the main language in <b>{languageFrequency[most_used_language]}</b> repositories.
