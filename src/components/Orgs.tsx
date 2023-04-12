@@ -20,7 +20,7 @@ const Orgs: React.FC<OrgsProps> = ({ orgs }) => {
             <div className="flex flex-wrap">
                 {orgs.map(o =>
                     <a key={o.login} href={"https://github.com/" + o.login} target="_blank" rel="noopener noreferrer">
-                        <div className="flex flex-col w-48 m-2 p-4 items-center border border-gray-700 rounded-lg">
+                        <div className="flex flex-col w-48 m-2 p-4 items-center border border-gray-700 rounded-lg hover:border-cyan-600">
                             <div className="my-2">
                                 <img src={o.avatar_url} className="w-16 rounded-xl" alt="avatar" />
                             </div>
