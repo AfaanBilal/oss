@@ -26,9 +26,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
             <div className="mx-6 lg:mx-8 mt-4 text-sm text-justify text-gray-400">{user.bio}</div>
             <div className="flex gap-2 text-gray-300 pt-4">
                 <div>{user.public_repos} repositories</div>
-                <div className="mx-4 text-center">&middot;</div>
+                <div className="mx-2 text-center">&middot;</div>
                 <div>{user.followers} followers</div>
             </div>
+            <div>{user.location}</div>
         </div>
     );
 };

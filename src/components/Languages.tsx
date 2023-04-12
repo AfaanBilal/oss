@@ -7,14 +7,16 @@
  * @link   https://github.com/AfaanBilal/oss
  */
 
+import { HashMap } from "../types";
+
 interface LanguagesProps {
     languages: string[];
-    languageFrequency: { [key: string]: number };
+    languageFrequency: HashMap<number>;
 }
 
 const Languages: React.FC<LanguagesProps> = ({ languages, languageFrequency }) => {
     return (
-        <div className="flex-1">
+        <div className="flex-1 px-4">
             <div className="border-t border-gray-700 pt-4 text-2xl text-gray-500 m-2">Languages ({languages.length})</div>
             <div className="flex flex-col">
                 {languages.map(l =>

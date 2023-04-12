@@ -8,7 +8,7 @@
  */
 
 import React from "react";
-import { Org, Repo, User } from "./types";
+import { HashMap, Org, Repo, User } from "./types";
 import Loading from "./components/Loading";
 import ProfileCard from "./components/ProfileCard";
 import Summary from "./components/Summary";
@@ -16,7 +16,7 @@ import Languages from "./components/Languages";
 import Orgs from "./components/Orgs";
 import Repositories from "./components/Repositories";
 
-const languageFrequency: { [k: string]: number } = {};
+const languageFrequency: HashMap<number> = {};
 
 const App: React.FC = () => {
     const username = window.location.search.substring(1) || "AfaanBilal";
@@ -24,8 +24,6 @@ const App: React.FC = () => {
     const [user, setUser] = React.useState<User | null>(null);
     const [orgs, setOrgs] = React.useState<Org[]>([]);
     const [repos, setRepos] = React.useState<Repo[]>([]);
-
-    const [error, setError] = React.useState("");
 
     React.useEffect(() => {
         fetch(`https://api.github.com/users/${username}`)

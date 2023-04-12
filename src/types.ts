@@ -58,3 +58,7 @@ export interface Repo {
     open_issues: number;
     watchers: number;
 }
+
+export interface HashMap<T> {
+    [k: string]: T;
+}
