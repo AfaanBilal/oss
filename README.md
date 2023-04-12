@@ -9,7 +9,7 @@ A quick summary of your open source work based on your GitHub activity.
 
 ## Your Profile Summary
 
-To view your profile summary, go to: **https://oss.afaan.dev/?`yourusername`**
+To view your profile summary, go to: **oss.afaan.dev/?`yourusername`**
 
 You can also edit the username in the top bar and press enter.
 
