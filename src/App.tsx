@@ -77,16 +77,16 @@ const App: React.FC = () => {
                 <div className="flex flex-col border-r border-gray-700 lg:w-1/5 w-full border-b lg:border-b-0">
                     <ProfileCard user={user} />
                     <Languages languages={languages} languageFrequency={languageFrequency} />
+                    <div className="mt-4 border-t border-gray-700 py-4 text-center">
+                        <a className="hover:text-cyan-700" href="https://github.com/AfaanBilal/oss" target="_blank" rel="noopener noreferrer">Source code</a> &middot;
+                        &copy; <a className="hover:text-cyan-700" href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a>
+                    </div>
                 </div>
                 <div className="flex flex-col flex-grow flex-1">
                     <Summary user={user} repos={repos} orgs={orgs} languages={languages} languageFrequency={languageFrequency} most_used_language={most_used_language} />
                     {orgs.length > 0 && <Orgs orgs={orgs} />}
                     <Repositories repos={repos} />
                 </div>
-            </div>
-            <div className="py-4 text-center">
-                <a className="hover:text-cyan-700" href="https://github.com/AfaanBilal/oss" target="_blank" rel="noopener noreferrer">Source code</a> &middot;
-                &copy; <a className="hover:text-cyan-700" href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a>
             </div>
         </div>;
 };

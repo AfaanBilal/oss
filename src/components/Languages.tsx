@@ -16,9 +16,9 @@ interface LanguagesProps {
 
 const Languages: React.FC<LanguagesProps> = ({ languages, languageFrequency }) => {
     return (
-        <div className="flex-1 px-4">
+        <div className="px-4">
             <div className="border-t border-gray-700 pt-4 text-2xl text-gray-500 m-2">Languages ({languages.length})</div>
-            <div className="flex flex-col">
+            <div className="grid grid-cols-2">
                 {languages.map(l =>
                     <div key={l} className=" bg-cyan-900 py-2 px-4 m-2 rounded-md flex justify-between">
                         <div>{l}</div>
