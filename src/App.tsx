@@ -58,10 +58,10 @@ const App: React.FC = () => {
         <Loading /> :
         <div className="flex flex-col text-white">
             <div className="flex flex-row p-4 items-end justify-between border-b border-b-gray-700">
-                <div className="text-2xl lg:text-4xl font-mono">
+                <div className="text-2xl lg:text-4xl font-mono flex-1">
                     OSS
                 </div>
-                <div className="text-xl lg:text-2xl ml-2 font-serif text-center">
+                <div className="text-xl lg:text-2xl ml-2 font-serif text-center flex-1">
                     Open Source Summary of
                     <input
                         className="ml-2 border-b border-dashed border-b-gray-400 pb-1 bg-gray-800 text-center focus:outline-none"
@@ -71,7 +71,7 @@ const App: React.FC = () => {
                         placeholder="GitHub Username"
                     />
                 </div>
-                <div className="text-sm lg:text-xl lg:mr-4 text-gray-400 hover:text-cyan-700">&copy; <a href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a></div>
+                <div className="flex-1 text-right text-sm lg:text-xl lg:mr-4 text-gray-400 hover:text-cyan-700">&copy; <a href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a></div>
             </div>
             <div className="flex flex-row flex-grow flex-wrap">
                 <div className="flex flex-col border-r border-gray-700 lg:w-1/5 w-full border-b lg:border-b-0">
@@ -79,12 +79,14 @@ const App: React.FC = () => {
                     <Languages languages={languages} languageFrequency={languageFrequency} />
                 </div>
                 <div className="flex flex-col flex-grow flex-1">
-                    <div className="flex flex-wrap border-b border-gray-700">
-                        <Summary user={user} repos={repos} orgs={orgs} languages={languages} languageFrequency={languageFrequency} most_used_language={most_used_language} />
-                        {orgs.length > 0 && <Orgs orgs={orgs} />}
-                    </div>
+                    <Summary user={user} repos={repos} orgs={orgs} languages={languages} languageFrequency={languageFrequency} most_used_language={most_used_language} />
+                    {orgs.length > 0 && <Orgs orgs={orgs} />}
                     <Repositories repos={repos} />
                 </div>
+            </div>
+            <div className="py-4 text-center">
+                <a className="hover:text-cyan-700" href="https://github.com/AfaanBilal/oss" target="_blank" rel="noopener noreferrer">Source code</a> &middot;
+                &copy; <a className="hover:text-cyan-700" href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a>
             </div>
         </div>;
 };

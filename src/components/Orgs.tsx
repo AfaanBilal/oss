@@ -15,7 +15,7 @@ interface OrgsProps {
 
 const Orgs: React.FC<OrgsProps> = ({ orgs }) => {
     return (
-        <div className="lg:border-l border-gray-700 p-2 flex-1 max-w-fit">
+        <div className="p-2 border-b border-gray-700">
             <div className="text-2xl text-gray-500 m-2">Orgs ({orgs.length})</div>
             <div className="flex flex-wrap">
                 {orgs.map(o =>
