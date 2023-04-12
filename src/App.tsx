@@ -71,7 +71,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="flex flex-col flex-grow flex-1">
                     <div className="flex flex-wrap border-b border-gray-700">
-                        <Summary user={user} repos={repos} languages={languages} languageFrequency={languageFrequency} most_used_language={most_used_language} />
+                        <Summary user={user} repos={repos} orgs={orgs} languages={languages} languageFrequency={languageFrequency} most_used_language={most_used_language} />
                         {orgs.length > 0 && <Orgs orgs={orgs} />}
                     </div>
                     <Repositories repos={repos} />

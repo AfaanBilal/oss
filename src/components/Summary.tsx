@@ -7,28 +7,30 @@
  * @link   https://github.com/AfaanBilal/oss
  */
 
-import { HashMap, Repo, User } from "../types";
+import { HashMap, Org, Repo, User } from "../types";
 
 interface SummaryProps {
     user: User;
     repos: Repo[];
+    orgs: Org[];
     languages: string[];
     languageFrequency: HashMap<number>;
     most_used_language: string;
 }
 
-const Summary: React.FC<SummaryProps> = ({ user, repos, languages, languageFrequency, most_used_language }) => {
+const Summary: React.FC<SummaryProps> = ({ user, repos, orgs, languages, languageFrequency, most_used_language }) => {
     return (
-        <div className="flex-1">
+        <div className="flex-1 p-2">
             <div className="text-2xl text-gray-500 m-2">Summary</div>
-            <div className="text-xl text-gray-300 m-2">
-                <span className="bg-cyan-900 px-2 py-1 rounded-sm">{user.name}</span> joined GitHub on {new Date(user.created_at).toDateString()}.
-                They have {user.public_repos} public repositories using {languages.length} different programming languages.
-                Their most used language is {most_used_language} which is the main language in {languageFrequency[most_used_language]} repositories.
-                Their repositories have a total of {repos.reduce((a, b) => a + b.stargazers_count, 0)} stars with the most starred repo being {repos.sort((a, b) => b.stargazers_count - a.stargazers_count)[0].name} with {repos.sort((a, b) => b.stargazers_count - a.stargazers_count)[0].stargazers_count} stars.
-                Their repositories have a total of {repos.reduce((a, b) => a + b.forks_count, 0)} forks.
-                Most forked repo: {repos.sort((a, b) => b.forks_count - a.forks_count)[0].name} with {repos.sort((a, b) => b.forks_count - a.forks_count)[0].forks_count} forks.
-                Community: {user.followers} followers and {user.following} following.
+            <div className="text-xl text-gray-300 m-2 lg:mr-4 text-justify">
+                <b>{user.name}</b> joined GitHub on <b>{new Date(user.created_at).toDateString()}</b>.
+                They have <b>{user.public_repos}</b> public repositories using <b>{languages.length}</b> different programming languages.
+                Their most used language is <b>{most_used_language}</b> which is the main language in <b>{languageFrequency[most_used_language]}</b> repositories.
+                Their repositories have a total of <b>{repos.reduce((a, b) => a + b.stargazers_count, 0)}</b> stars
+                with the most starred repo being <b>{repos.sort((a, b) => b.stargazers_count - a.stargazers_count)[0].name}</b> with <b>{repos.sort((a, b) => b.stargazers_count - a.stargazers_count)[0].stargazers_count}</b> stars.
+                Their repositories have a total of <b>{repos.reduce((a, b) => a + b.forks_count, 0)}</b> forks.
+                Their most forked repo is <b>{repos.sort((a, b) => b.forks_count - a.forks_count)[0].name}</b> with <b>{repos.sort((a, b) => b.forks_count - a.forks_count)[0].forks_count}</b> forks.
+                They belong to <b>{orgs.length}</b> orgs.
             </div>
         </div>
     );
