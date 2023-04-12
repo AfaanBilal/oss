@@ -19,7 +19,7 @@ import Repositories from "./components/Repositories";
 const languageFrequency: HashMap<number> = {};
 
 const App: React.FC = () => {
-    const username = window.location.search.substring(1) || "AfaanBilal";
+    const [username, setUsername] = React.useState<string>(window.location.search.substring(1) || "AfaanBilal");
 
     const [user, setUser] = React.useState<User | null>(null);
     const [orgs, setOrgs] = React.useState<Org[]>([]);
@@ -61,7 +61,16 @@ const App: React.FC = () => {
                 <div className="text-2xl lg:text-4xl font-mono">
                     OSS
                 </div>
-                <div className="text-xl lg:text-2xl ml-2 font-serif text-center">Open Source Summary of <span className="border-b border-dashed border-b-gray-400 pb-1">@{username}</span></div>
+                <div className="text-xl lg:text-2xl ml-2 font-serif text-center">
+                    Open Source Summary of
+                    <input
+                        className="ml-2 border-b border-dashed border-b-gray-400 pb-1 bg-gray-800 text-center focus:outline-none"
+                        onKeyUp={e => { if (e.key === "Enter") window.location.href = "/?" + username; }}
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                        placeholder="GitHub Username"
+                    />
+                </div>
                 <div className="text-sm lg:text-xl lg:mr-4 text-gray-400 hover:text-cyan-700">&copy; <a href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a></div>
             </div>
             <div className="flex flex-row flex-grow flex-wrap">
