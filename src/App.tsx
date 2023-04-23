@@ -17,6 +17,7 @@ import Orgs from "./components/Orgs";
 import Repositories from "./components/Repositories";
 
 const languageFrequency: HashMap<number> = {};
+const languageTime: HashMap<number> = {};
 
 const App: React.FC = () => {
     const [username, setUsername] = React.useState<string>(window.location.search.substring(1) || "AfaanBilal");
@@ -52,6 +53,7 @@ const App: React.FC = () => {
 
     const languages = [...new Set(repos.map(r => r.language))].filter(l => !!l).sort();
     languages.forEach(l => languageFrequency[l || ""] = repos.filter(r => r.language === l).length);
+    languages.forEach(l => languageTime[l || ""] = new Date().getFullYear() - new Date(repos.filter(r => r.language === l).sort((a, b) => (new Date(a.created_at)).getTime() - new Date(b.created_at).getTime())[0].created_at).getFullYear());
     const most_used_language = languages.length ? Object.keys(languageFrequency).reduce((a, b) => languageFrequency[a] > languageFrequency[b] ? a : b) : "";
 
     return !user || !repos.length ?
@@ -74,9 +76,9 @@ const App: React.FC = () => {
                 <div className="flex-1 text-right text-sm lg:text-xl lg:mr-4 text-gray-400 hover:text-cyan-700">&copy; <a href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a></div>
             </div>
             <div className="flex flex-row flex-grow flex-wrap">
-                <div className="flex flex-col border-r border-gray-700 lg:w-1/5 w-full border-b lg:border-b-0">
+                <div className="flex flex-col border-r border-gray-700 lg:w-1/4 w-full border-b lg:border-b-0">
                     <ProfileCard user={user} />
-                    <Languages languages={languages} languageFrequency={languageFrequency} />
+                    <Languages languages={languages} languageFrequency={languageFrequency} languageTime={languageTime} />
                     <div className="mt-4 border-t border-gray-700 py-4 text-center">
                         <a className="hover:text-cyan-700" href="https://github.com/AfaanBilal/oss" target="_blank" rel="noopener noreferrer">Source code</a> &middot;
                         &copy; <a className="hover:text-cyan-700" href="https://afaan.dev" target="_blank" rel="noopener noreferrer">Afaan Bilal</a>
