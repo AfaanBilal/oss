@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
     const languages = [...new Set(repos.map(r => r.language))].filter(l => !!l).sort();
     languages.forEach(l => languageFrequency[l || ""] = repos.filter(r => r.language === l).length);
-    languages.forEach(l => languageTime[l || ""] = new Date().getFullYear() - new Date(repos.filter(r => r.language === l).sort((a, b) => (new Date(a.created_at)).getTime() - new Date(b.created_at).getTime())[0].created_at).getFullYear());
+    languages.forEach(l => languageTime[l || ""] = Math.max(1, new Date().getFullYear() - new Date(repos.filter(r => r.language === l).sort((a, b) => (new Date(a.created_at)).getTime() - new Date(b.created_at).getTime())[0].created_at).getFullYear()));
     const most_used_language = languages.length ? Object.keys(languageFrequency).reduce((a, b) => languageFrequency[a] > languageFrequency[b] ? a : b) : "";
 
     return !user || !repos.length ?

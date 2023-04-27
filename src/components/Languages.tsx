@@ -21,9 +21,9 @@ const Languages: React.FC<LanguagesProps> = ({ languages, languageFrequency, lan
             <div className="border-t border-gray-700 pt-4 text-2xl text-gray-500 m-2">Languages ({languages.length})</div>
             <div className="grid grid-cols-2">
                 {languages.map(l =>
-                    <div key={l} className="bg-cyan-900 py-2 px-4 m-2 rounded-md flex justify-between">
-                        <div className="flex-1">{l}</div>
-                        <div className="pl-1">{languageTime[l!]} year{languageTime[l!] != 1 ? "s" : ""} &middot; {languageFrequency[l!]} repo{languageFrequency[l!] != 1 ? "s" : ""}</div>
+                    <div key={l} className="bg-cyan-900 py-2 px-4 m-2 rounded-md">
+                        <div className="text-xl text-center text-bold pb-2">{l}</div>
+                        <div className="text-center text-gray-300">{languageTime[l!]} year{languageTime[l!] != 1 ? "s" : ""} &middot; {languageFrequency[l!]} repo{languageFrequency[l!] != 1 ? "s" : ""}</div>
                     </div>
                 )}
             </div>
