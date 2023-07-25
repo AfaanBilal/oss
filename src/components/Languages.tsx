@@ -21,9 +21,12 @@ const Languages: React.FC<LanguagesProps> = ({ languages }) => {
                 {languages.map(l =>
                     <div key={l.name} className="bg-cyan-900 py-2 px-4 m-2 rounded-md">
                         <div className="text-xl text-center text-bold pb-2">{l.name}</div>
-                        <div className="text-center text-gray-300 flex gap-2 text-sm">
+                        <div className="text-center text-gray-300 flex gap-2 justify-center">
                             <div>
                                 {l.repos} repo{l.repos != 1 ? "s" : ""}
+                            </div>
+                            <div>
+                                &middot;
                             </div>
                             <div>
                                 {l.years} year{l.years != 1 ? "s" : ""}
