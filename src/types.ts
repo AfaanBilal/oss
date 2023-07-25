@@ -59,6 +59,12 @@ export interface Repo {
     watchers: number;
 }
 
+export interface Language {
+    name: string;
+    repos: number;
+    years: number;
+}
+
 export interface HashMap<T> {
     [k: string]: T;
 }
