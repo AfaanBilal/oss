@@ -26,9 +26,15 @@ const App: React.FC = () => {
 
     React.useEffect(() => {
         fetch(`https://api.github.com/users/${username}`)
-            .then(res => res.json())
-            .then(res => setUser(res))
-            .catch(err => console.error(err));
+            .then(res => {
+                if (!res.ok) {
+                    alert("Please check the username.");
+                    window.location.replace(location.pathname);
+                }
+
+                return res.json();
+            })
+            .then(res => setUser(res));
     }, []);
 
     React.useEffect(() => {
@@ -43,7 +49,14 @@ const App: React.FC = () => {
 
         fetch(user!.repos_url + "?per_page=100")
             .then(res => res.json())
-            .then(res => setRepos(res))
+            .then(res => {
+                if (!res.length) {
+                    alert("This user doesn't seem to have any public repos.");
+                    window.location.replace(location.pathname);
+                }
+
+                setRepos(res);
+            })
             .catch(err => console.error(err));
 
         document.title = "OSS - Open Source Summary of @" + username;
