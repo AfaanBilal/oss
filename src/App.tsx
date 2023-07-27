@@ -66,10 +66,17 @@ const App: React.FC = () => {
         const langs: Language[] = [];
 
         [...new Set(repos.map(r => r.language))].filter(l => !!l).map(l => {
+            const thisYear = new Date().getFullYear();
+            const langStartYear = new Date(
+                repos
+                    .filter(r => r.language === l)
+                    .sort((a, b) => (new Date(a.created_at)).getTime() - new Date(b.created_at).getTime())[0].created_at
+            ).getFullYear();
+
             langs.push({
                 name: l,
                 repos: repos.filter(r => r.language === l).length,
-                years: Math.max(1, new Date().getFullYear() - new Date(repos.filter(r => r.language === l).sort((a, b) => (new Date(a.created_at)).getTime() - new Date(b.created_at).getTime())[0].created_at).getFullYear()),
+                years: Math.max(1, thisYear - langStartYear + 1),
             });
         });
 
